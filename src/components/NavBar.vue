@@ -1,4 +1,5 @@
 <template>
+  <div>
     <nav
       :class="{ sticky: isSticky }"
       class="navbar navbar-expand-lg navbar-light nav-container"
@@ -26,14 +27,23 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/contact">Contact</router-link>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" v-b-modal.signin-modal>Sign In</a>
+          </li>
         </ul>
       </div>
     </nav>
+    <SignInModal></SignInModal>
+  </div>
 </template>
 
 <script>
+import SignInModal from "@/components/SignInModal.vue";
 export default {
   name: "PolyclinicV21NavBar",
+  components: {
+    SignInModal,
+  },
 
   data() {
     return {

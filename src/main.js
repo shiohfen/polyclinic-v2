@@ -7,10 +7,15 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import Multiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.min.css'
+import Vuelidate from 'vuelidate'
 
-// Make BootstrapVue available throughout your project
+
+Vue.use(Vuelidate)
+Vue.component('multiselect', Multiselect)
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
+
 Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
