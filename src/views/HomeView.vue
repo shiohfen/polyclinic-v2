@@ -30,7 +30,8 @@
                   track-by="id"
                   :searchable="true"
                   :custom-label="customLabel"
-                ></multiselect>
+                >
+                </multiselect>
               </div>
             </div>
           </div>
@@ -76,6 +77,9 @@
               assumenda inventore nihil ducimus, provident veniam ipsam dolore
               maiores optio alias soluta labore officiis sit.
             </p>
+            <a href="#" class="btn-primary" v-b-modal.register-modal
+              >Find out more.</a
+            >
           </div>
           <div class="col-md">
             <img src="@/assets/img4.jpg" width="700" height="auto" />
@@ -83,12 +87,17 @@
         </div>
       </div>
     </div>
+    <RegisterModal />
   </div>
 </template>
 
 <script>
+import RegisterModal from "@/components/RegisterModal.vue";
 export default {
   name: "PolyclinicV21HomeView",
+  components: {
+    RegisterModal,
+  },
   data() {
     return {
       selected: [],
@@ -98,18 +107,21 @@ export default {
           name: "Clinic A",
           specialization: "Dermatology",
           doctors: ["Dr. John Doe", "Dr. Jane Doe"],
+          img: "https://img.freepik.com/free-psd/restaurant-vintage-badge-template-psd-set-remixed-from-public-domain-artworks_53876-141767.jpg?size=626&ext=jpg&uid=R97741882&semt=sph",
         },
         {
           id: 2,
           name: "Clinic B",
           specialization: "Pediatrics",
           doctors: ["Dr. Mark Smith", "Dr. Mary Smith"],
+          img: "https://img.freepik.com/premium-vector/traditional-market-logo_688376-5.jpg?size=626&ext=jpg&uid=R97741882&semt=sph",
         },
         {
           id: 3,
           name: "Clinic C",
           specialization: "Cardiology",
           doctors: ["Dr. David Brown", "Dr. Emily Brown"],
+          img: "https://img.freepik.com/free-vector/gradient-ap-monogram-logo-design-template_23-2150155818.jpg?size=626&ext=jpg&uid=R97741882&semt=sph",
         },
       ],
     };
@@ -145,5 +157,20 @@ h3 {
   font-size: 4rem;
   font-weight: bold;
   text-align: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #0072ff, #00c6ff);
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(to right, #00c6ff, #0072ff);
 }
 </style>

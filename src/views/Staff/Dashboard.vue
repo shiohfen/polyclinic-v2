@@ -1,0 +1,71 @@
+<template>
+  <div class="mx-5 p-5">
+    <b-tabs pills card vertical>
+      <b-tab active>
+        <template #title>
+          <b-icon icon="house"></b-icon> &nbsp; Dashboard
+        </template>
+        <div class="container"><ReportsVue /></div>
+      </b-tab>
+
+      <b-tab>
+        <template #title>
+          <b-icon icon="file-earmark-text"></b-icon>&nbsp; Clinic Details
+        </template>
+        <div class="container"><ClinicDetailsVue /></div>
+      </b-tab>
+      <b-tab>
+        <template #title>
+          <b-icon icon="people"></b-icon>&nbsp; Doctors
+        </template>
+        <div><DoctorsVue /></div>
+      </b-tab>
+      <b-tab>
+        <template #title>
+          <b-icon icon="calendar-event"></b-icon>&nbsp; Appointments
+        </template>
+        <div><AppointmentsVue /></div>
+      </b-tab>
+      <b-tab>
+        <template #title>
+          <b-icon icon="file-earmark-richtext"></b-icon>&nbsp; Reports
+        </template>
+        <p class="p-3">Tab contents 5</p>
+      </b-tab>
+    </b-tabs>
+  </div>
+</template>
+<script>
+import ReportsVue from "@/components/Staff/Reports.vue";
+import ClinicDetailsVue from "@/components/Staff/ClinicDetails.vue";
+import DoctorsVue from "@/components/Staff/Doctors.vue";
+import AppointmentsVue from "@/components/Staff/Appointments.vue";
+
+export default {
+  name: "PolyclinicV21Dashboard",
+  components: { ReportsVue, ClinicDetailsVue, DoctorsVue, AppointmentsVue },
+};
+</script>
+
+
+<style>
+.nav-link {
+  color: #333;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.nav-link i {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+</style>
+

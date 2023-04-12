@@ -12,6 +12,7 @@ import 'vue-multiselect/dist/vue-multiselect.min.css'
 import Vuelidate from 'vuelidate'
 
 
+
 Vue.use(Vuelidate)
 Vue.component('multiselect', Multiselect)
 Vue.use(BootstrapVue)

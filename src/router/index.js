@@ -15,7 +15,31 @@ const routes = [
     name: 'about',
 
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/ContactView.vue')
+  },
+  {
+    path: '/StaffDashboard',
+    name: 'staffdashboard',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/Staff/Dashboard.vue')
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+
+    component: () => import(/* webpackChunkName: "about" */ '../components/Staff/Reports.vue')
+  },
+  {
+    path: '/clinicdetails',
+    name: 'clinicdetails',
+
+    component: () => import(/* webpackChunkName: "about" */ '../components/Staff/ClinicDetails.vue')
+  },
 ]
 
 const router = new VueRouter({
