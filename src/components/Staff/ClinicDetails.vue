@@ -9,24 +9,41 @@
           img-top
           img-fluid
         >
-          <b-card-title class="clickable">{{ clinicName }}</b-card-title>
-          <b-card-text class="clickable">{{ clinicAddress }}</b-card-text>
-          <b-card-text class="clickable">{{ clinicPhone }}</b-card-text>
-          <b-card-text class="clickable">{{ clinicEmail }}</b-card-text>
+          <b-card-title class="clickable" @click="edit('clinicName')">
+            {{ clinicName }}</b-card-title
+          >
+          <b-card-text class="clickable" @click="edit('clinicAddress')">
+            {{ clinicAddress }}</b-card-text
+          >
+          <b-card-text class="clickable" @click="edit('clinicPhone')">
+            {{ clinicPhone }}</b-card-text
+          >
+          <b-card-text class="clickable" @click="edit('clinicEmail')">
+            {{ clinicEmail }}</b-card-text
+          >
         </b-card>
       </b-col>
       <b-col cols="8">
         <b-card class="card">
-          <b-card-text class="clickable">{{ clinicDescription }}</b-card-text>
+          <b-card-text class="clickable" @click="edit('clinicDescription')">
+            {{ clinicDescription }}
+          </b-card-text>
         </b-card>
       </b-col>
     </b-row>
+
+    <b-modal v-model="showModal" title="Edit" @ok="save">
+      <b-form>
+        <b-form-group :label="editing" label-for="edit-input">
+          <b-form-input id="edit-input" v-model="editValue"></b-form-input>
+        </b-form-group>
+      </b-form>
+    </b-modal>
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
   data() {
     return {
       logo: "https://dummyimage.com/400x400/000/fff&text=Logo",
@@ -36,7 +53,27 @@ export default {
       clinicEmail: "info@dummyclinic.com",
       clinicDescription:
         " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas blanditiis ut officiis architecto quos quas expedita quod quaerat sunt minus commodi alias delectus ipsum quidem debitis nemo, ratione sed voluptate!",
+      editing: "",
+      editValue: "",
+      showModal: false,
     };
+  },
+  methods: {
+    edit(prop) {
+      if (prop == "clinicName") {
+        this.editing = "Clinic Name";
+      } else if (prop == "clinicAddress") {
+        this.editing = "Clinic Address";
+      } else if (prop == "clinicPhone") {
+        this.editing = "Clinic Phone";
+      }
+      this.editValue = this[prop];
+      this.showModal = true;
+    },
+    save() {
+      this[this.editing] = this.editValue;
+      this.showModal = false;
+    },
   },
 };
 </script>

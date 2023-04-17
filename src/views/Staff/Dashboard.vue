@@ -1,11 +1,47 @@
 <template>
   <div class="mx-5 p-5">
-    <b-tabs pills card vertical>
+    <b-tabs pills card vertical :scrollable="true">
       <b-tab active>
         <template #title>
           <b-icon icon="house"></b-icon> &nbsp; Dashboard
         </template>
-        <div class="container"><ReportsVue /></div>
+        <div class="container">
+          <div class="row text-center pb-5 border-bottom">
+            <div class="col-md-3">
+              <div class="card bg-success text-white mb-4 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Appointments Completed</h5>
+                  <h1 class="card-text">{{ completed }}</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card bg-warning text-white mb-4 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Appointments On Queue</h5>
+                  <h1 class="card-text">{{ queue }}</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card bg-info text-white mb-4 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Pending Appointments</h5>
+                  <h1 class="card-text">{{ pending }}</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card bg-primary text-white mb-4 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Doctors</h5>
+                  <h1 class="card-text">{{ pending }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Reports />
+        </div>
       </b-tab>
 
       <b-tab>
@@ -24,26 +60,42 @@
         <template #title>
           <b-icon icon="calendar-event"></b-icon>&nbsp; Appointments
         </template>
-        <div><AppointmentsVue /></div>
+        <div class="container"><AppointmentsVue /></div>
       </b-tab>
       <b-tab>
         <template #title>
           <b-icon icon="file-earmark-richtext"></b-icon>&nbsp; Reports
         </template>
-        <p class="p-3">Tab contents 5</p>
+        <div class="container">
+          <YearlyReportsVue />
+        </div>
       </b-tab>
     </b-tabs>
   </div>
 </template>
 <script>
-import ReportsVue from "@/components/Staff/Reports.vue";
+import YearlyReportsVue from "@/components/Staff/Reports/YearlyReport.vue";
 import ClinicDetailsVue from "@/components/Staff/ClinicDetails.vue";
 import DoctorsVue from "@/components/Staff/Doctors.vue";
 import AppointmentsVue from "@/components/Staff/Appointments.vue";
+import Reports from "@/components/Staff/Reports/Reports.vue";
 
 export default {
   name: "PolyclinicV21Dashboard",
-  components: { ReportsVue, ClinicDetailsVue, DoctorsVue, AppointmentsVue },
+  components: {
+    YearlyReportsVue,
+    ClinicDetailsVue,
+    DoctorsVue,
+    AppointmentsVue,
+    Reports,
+  },
+  data() {
+    return {
+      completed: 50,
+      queue: 10,
+      pending: 5,
+    };
+  },
 };
 </script>
 
@@ -66,6 +118,14 @@ export default {
 .nav-link i {
   margin-right: 0.5rem;
   font-size: 1.5rem;
+}
+
+.card {
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 </style>
 

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ChartVue from "./Chart.vue";
+import ChartVue from "../Chart.vue";
 
 export default {
   name: "Reports",

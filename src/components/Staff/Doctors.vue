@@ -7,6 +7,7 @@
             id="search-input"
             v-model="filter"
             type="search"
+            placeholder="Search"
           ></b-form-input>
         </b-input-group>
       </b-form-group>
@@ -178,7 +179,7 @@ export default {
 
       doc.autoTable(content);
 
-      doc.save("doctors.pdf");
+      doc.save("Doctors.pdf");
     },
   },
 };

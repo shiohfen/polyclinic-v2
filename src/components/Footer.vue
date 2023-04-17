@@ -5,38 +5,50 @@
         <div class="col-md-4 mb-4 mb-md-0">
           <h3>About Us</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            gravida lorem sit amet dui facilisis, vitae varius massa gravida.
-            Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia Curae; Cras rutrum viverra dolor,
-            at interdum tellus molestie sed.
+            `Polyclinic is a website where multiple clinics register and are
+            listed, so customers can select a clinic or a doctor they prefer and
+            request an appointment.`
           </p>
         </div>
         <div class="col-md-4 mb-4 mb-md-0">
           <h3>Contact Us</h3>
           <ul class="list-unstyled">
             <li>
-              <i class="fa fa-map-marker"></i> 123 Street, City, State 12345
+              <i class="fa fa-map-marker"></i>
+              <a
+                href="https://www.google.com/maps/place/Baguio,+Benguet/@16.3995155,120.5681756,14z/data=!3m1!4b1!4m6!3m5!1s0x3391a16879def13f:0x8edef534be3a75c0!8m2!3d16.4023332!4d120.5960071!16zL20vMDE1bDFf"
+                target="_blank"
+                rel="noopener noreferrer"
+                >123 Street, City, State 12345</a
+              >
             </li>
             <li><i class="fa fa-phone"></i> (123) 456-7890</li>
-            <li><i class="fa fa-envelope"></i> info@polyclinic.com</li>
+            <li>
+              <i class="fa fa-envelope"></i>
+              <a
+                href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                target="_blank"
+                rel="noopener noreferrer"
+                >info@polyclinic.com</a
+              >
+            </li>
           </ul>
         </div>
         <div class="col-md-4">
           <h3>Follow Us</h3>
           <ul class="list-inline">
             <li class="list-inline-item mx-3">
-              <a href="#">
+              <a href="https://www.facebook.com/norvinwayne" target="__blank">
                 <i class="fa-brands fa-facebook fa-2x"></i>
               </a>
             </li>
             <li class="list-inline-item mx-3">
-              <a href="#">
+              <a href="https://twitter.com/" target="__blank">
                 <i class="fa-brands fa-twitter fa-2x"></i>
               </a>
             </li>
             <li class="list-inline-item mx-3">
-              <a href="#">
+              <a href="https://www.instagram.com/" target="__blank">
                 <i class="fa-brands fa-instagram fa-2x"></i>
               </a>
             </li>

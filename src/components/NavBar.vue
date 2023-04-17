@@ -22,11 +22,11 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
+            <router-link class="nav-link" to="/about">About Us</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link class="nav-link" to="/contact">Contact</router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="#" v-b-modal.signin-modal>Sign In</a>
           </li>

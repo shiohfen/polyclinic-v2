@@ -23,16 +23,22 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ContactView.vue')
   },
   {
-    path: '/StaffDashboard',
+    path: '/staffdashboard',
     name: 'staffdashboard',
 
     component: () => import(/* webpackChunkName: "about" */ '../views/Staff/Dashboard.vue')
   },
   {
+    path: '/doctordashboard',
+    name: 'doctordashboard',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/Doctor/Dashboard.vue')
+  },
+  {
     path: '/reports',
     name: 'reports',
 
-    component: () => import(/* webpackChunkName: "about" */ '../components/Staff/Reports.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/Staff/Reports/YearlyReport.vue')
   },
   {
     path: '/clinicdetails',
