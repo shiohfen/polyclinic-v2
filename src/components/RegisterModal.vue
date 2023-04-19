@@ -1,14 +1,27 @@
 <template>
-  <b-modal id="register-modal" title="Register" size="lg" hide-footer @hide="resetForm">
+  <b-modal
+    id="register-modal"
+    title="Register"
+    size="lg"
+    hide-footer
+    @hide="resetForm"
+  >
     <form @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="clinicName">Clinic Name:</label>
-        <input
-          id="clinicName"
-          class="form-control"
-          type="text"
-          v-model.trim="form.clinicName"
-        />
+
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <i class="fa-regular fa-building"></i>
+          </b-input-group-prepend>
+          <input
+            id="clinicName"
+            class="form-control"
+            type="text"
+            v-model.trim="form.clinicName"
+          />
+        </b-input-group>
+
         <div v-if="!$v.form.clinicName.$dirty" class="invalid-feedback">
           <i class="fas fa-exclamation-circle"></i> Clinic name is required.
         </div>
@@ -22,12 +35,18 @@
 
       <div class="form-group">
         <label for="clinicAddress">Clinic Address:</label>
-        <input
-          id="clinicAddress"
-          class="form-control"
-          type="text"
-          v-model.trim="form.clinicAddress"
-        />
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <i class="fa-solid fa-location-dot"></i>
+          </b-input-group-prepend>
+          <input
+            id="clinicAddress"
+            class="form-control"
+            type="text"
+            v-model.trim="form.clinicAddress"
+          />
+        </b-input-group>
+
         <div v-if="!$v.form.clinicAddress.$dirty" class="invalid-feedback">
           <i class="fas fa-exclamation-circle"></i> Clinic address is required.
         </div>
@@ -123,7 +142,9 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <b-btn class="btn btn-primary" variant="primary" type="submit" block>Submit</b-btn>
+        <b-btn class="btn btn-primary" variant="primary" type="submit" block
+          >Submit</b-btn
+        >
       </div>
     </form>
   </b-modal>

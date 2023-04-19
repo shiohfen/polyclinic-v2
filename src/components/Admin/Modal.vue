@@ -1,5 +1,5 @@
 <template>
-  <b-modal :title="title" @hidden="$emit('close')">
+  <b-modal id="tableModal" size="xl" :title="title">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -11,7 +11,8 @@
         <template
           v-if="index > 0"
           :slot="`cell(${Object.keys(headers)[index]})`"
-          slot-scope="data" >
+          slot-scope="data"
+        >
           {{ data.value }}
         </template>
       </template>
@@ -26,15 +27,9 @@
 <script>
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { BModal, BFormInput, BTable, BButton } from "bootstrap-vue";
 
 export default {
-  components: {
-    BModal,
-    BFormInput,
-    BTable,
-    BButton,
-  },
+  components: {},
   props: {
     title: {
       type: String,
@@ -53,7 +48,13 @@ export default {
   computed: {
     headers() {
       if (this.items.length > 0) {
-        return Object.keys(this.items[0]);
+        return Object.keys(this.items[0]).map((key) => {
+          return {
+            key: key,
+            label: key,
+            sortable: true,
+          };
+        });
       } else {
         return [];
       }
