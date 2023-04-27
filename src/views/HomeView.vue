@@ -30,7 +30,32 @@
                   track-by="id"
                   :searchable="true"
                   :custom-label="customLabel"
+                  :max-height="500"
                 >
+                  <!-- <template slot="singleLabel" slot-scope="props"
+                    ><b-img
+                      :src="props.option.img"
+                      style="max-width: auto; max-height: 5em"
+                    ></b-img>
+                    <span>{{ props.option.name }}</span>
+                  </template> -->
+
+                  <template slot="option" slot-scope="props">
+                    <b-row>
+                      <b-img
+                        :src="props.option.img"
+                        style="max-width: auto; max-height: 5em"
+                        class="mx-3"
+                      ></b-img>
+                      <span
+                        >{{ props.option.name }} <br />
+                        Specializations: {{ props.option.specialization }}
+                        <br />
+                        Phone: {{ props.option.phone }} <br />
+                        Email: {{ props.option.email }}
+                      </span>
+                    </b-row>
+                  </template>
                 </multiselect>
               </div>
             </div>
@@ -88,19 +113,22 @@
       </div>
     </div>
     <RegisterModal />
+    <RequestAppointmentModalVue />
   </div>
 </template>
 
 <script>
 import RegisterModal from "@/components/RegisterModal.vue";
+import RequestAppointmentModalVue from '@/components/RequestAppointmentModal.vue';
 export default {
   name: "PolyclinicV21HomeView",
   components: {
-    RegisterModal,
+    RegisterModal,RequestAppointmentModalVue
   },
   data() {
     return {
       selected: [],
+
       options: [
         {
           id: 1,
