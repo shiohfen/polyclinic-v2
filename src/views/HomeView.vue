@@ -41,7 +41,7 @@
                   </template> -->
 
                   <template slot="option" slot-scope="props">
-                    <b-row>
+                    <b-row v-b-modal.requestAppointmentModal>
                       <b-img
                         :src="props.option.img"
                         style="max-width: auto; max-height: 5em"
@@ -119,11 +119,12 @@
 
 <script>
 import RegisterModal from "@/components/RegisterModal.vue";
-import RequestAppointmentModalVue from '@/components/RequestAppointmentModal.vue';
+import RequestAppointmentModalVue from "@/components/RequestAppointmentModal.vue";
 export default {
   name: "PolyclinicV21HomeView",
   components: {
-    RegisterModal,RequestAppointmentModalVue
+    RegisterModal,
+    RequestAppointmentModalVue,
   },
   data() {
     return {

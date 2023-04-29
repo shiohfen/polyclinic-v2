@@ -1,57 +1,77 @@
 <template>
   <div>
-    <button @click="showModal = true" class="btn btn-primary">Open Modal</button>
-
-    <b-modal v-model="showModal" title="Request Appointment" ok-title="Request">
-      <div class="form-group">
-        <label for="doctor">Select Doctor:</label>
-        <multiselect v-model="selectedDoctor" :options="doctors" :close-on-select="true" :clear-on-select="false" :preserve-search="true" placeholder="Search for a doctor..."></multiselect>
-      </div>
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" v-model="name">
-      </div>
-      <div class="form-group">
-        <label for="email">Concerns:</label>
-        <input type="email" class="form-control" id="email" v-model="email">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="tel" class="form-control" id="phone" v-model="phone">
-      </div>
+    <b-modal id="requestAppointmentModal" title="Request Appointment" ok-title="Request Appointment">
+      <b-form-group label="Select Doctor:">
+        <multiselect
+          v-model="selectedDoctor"
+          :options="doctors"
+          :close-on-select="true"
+          :clear-on-select="false"
+          :preserve-search="true"
+          placeholder="Search for a doctor..."
+        ></multiselect>
+      </b-form-group>
+      <b-form-group label="Name:">
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <i class="fa-solid fa-user"></i>
+          </b-input-group-prepend>
+          <b-form-input v-model="name" placeholder="Full Name"></b-form-input>
+        </b-input-group>
+      </b-form-group>
+      <b-form-group label="Concerns:">
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <i class="fa-solid fa-file-circle-question"></i>
+          </b-input-group-prepend>
+          <b-form-input
+            v-model="concerns"
+            type="text"
+            placeholder="Concerns"
+          ></b-form-input>
+        </b-input-group>
+      </b-form-group>
+      <b-form-group label="Phone:">
+        <b-input-group>
+          <b-input-group-prepend is-text>
+            <i class="fa-solid fa-phone"></i>
+          </b-input-group-prepend>
+          <b-form-input
+            v-model="phone"
+            type="tel"
+            placeholder="Contact Number"
+          ></b-form-input>
+        </b-input-group>
+      </b-form-group>
     </b-modal>
   </div>
 </template>
 
 <script>
-import Multiselect from 'vue-multiselect'
-import { BModal } from 'bootstrap-vue'
+import Multiselect from "vue-multiselect";
 
 export default {
   components: {
     Multiselect,
-    BModal
   },
   data() {
     return {
-      showModal: false,
       selectedDoctor: null,
       doctors: [
-        { id: 1, name: 'Dr. John Smith' },
-        { id: 2, name: 'Dr. Jane Doe' },
-        { id: 3, name: 'Dr. James Johnson' },
+        { id: 1, name: "Dr. John Smith" },
+        { id: 2, name: "Dr. Jane Doe" },
+        { id: 3, name: "Dr. James Johnson" },
       ],
-      name: '',
-      email: '',
-      phone: '',
-    }
+      name: "",
+      concerns: "",
+      phone: "",
+    };
   },
   methods: {
     submitForm() {
       // Perform form validation and submission here
-      console.log('Request submitted!')
-      this.showModal = false
-    }
-  }
-}
+      console.log("Request submitted!");
+    },
+  },
+};
 </script>
