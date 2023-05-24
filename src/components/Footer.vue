@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" ref="footer">
     <div class="container text-center">
       <div class="row justify-content-center">
         <div class="col-md-4 mb-4 mb-md-0">
@@ -62,6 +62,20 @@
 <script>
 export default {
   name: "PolyclinicV21Footer",
+  mounted() {
+    const footer = this.$refs.footer;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          footer.classList.add("animation-started");
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(footer);
+  },
 };
 </script>
 
@@ -69,6 +83,9 @@ export default {
 .footer {
   background-color: #f8f9fa;
   padding: 4rem 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 1s, transform 2s;
 }
 
 @media (min-width: 768px) {
@@ -114,5 +131,10 @@ export default {
 
 .list-inline-item {
   margin-right: 15px;
+}
+
+.footer.animation-started {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

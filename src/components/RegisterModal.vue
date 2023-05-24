@@ -1,11 +1,5 @@
 <template>
-  <b-modal
-    id="register-modal"
-    title="Register"
-    size="lg"
-    hide-footer
-    @hidden="resetForm"
-  >
+  <b-modal id="register-modal" title="Register" size="lg" hide-footer>
     <div v-if="!form.isStaffModal">
       <form @submit.prevent="form.isStaffModal = true" class="container">
         <div class="text-center" v-if="form.logoPreview.length">
@@ -358,6 +352,7 @@
 </template>
 <script>
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import axios from "axios";
 
 export default {
   name: "RegisterModal",
@@ -402,30 +397,38 @@ export default {
       if (e.target.files[0]) {
         const file = e.target.files[0];
         this.form.legitimacy = file;
-      }
-      else {
+      } else {
         this.form.legitimacy = null;
       }
     },
     onSubmit() {
-      this.$v.form.$touch();
-
       if (this.$v.form.$invalid) {
+        console.log("invalid");
         return;
       }
 
-      // TODO: Submit the form data to the server.
-      console.log(this.form);
-
+      axios
+        .post("https://sore-gold-millipede-vest.cyclic.app/registerUser", {
+          email: this.form.staffEmail,
+          password: this.form.staffPassword,
+          displayName: this.form.staffName,
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       // Hide the modal and reset the form.
       this.$bvModal.hide("register-modal");
-      this.resetForm();
+      // this.resetForm();
     },
     resetForm() {
       this.form.isStaffModal = false;
       this.form.clinicName = "";
       this.form.clinicAddress = "";
       this.form.logo = null;
+      this.form.logoPreview = "";
       this.form.legitimacy = null;
       this.form.staffName = "";
       this.form.staffEmail = "";

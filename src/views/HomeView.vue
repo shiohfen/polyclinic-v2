@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <div class="section1 mb-5">
+    <div class="section1 mb-5" ref="section1">
       <div class="container">
         <h1 class="text-center">
           PolyClinic helps find the right care for you
@@ -77,17 +77,16 @@
           <div class="col-md text-left">
             <h2>Instant Appointment with Doctors</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Suscipit, eveniet quibusdam? Eligendi explicabo dolor error
-              assumenda inventore nihil ducimus, provident veniam ipsam dolore
-              maiores optio alias soluta labore officiis sit.
+              Booking an appointment with Polyclinic's doctors is an effortless
+              process - clients can simply choose a doctor, input the necessary
+              details, and request their appointment with ease.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="section2">
+    <div class="section2" ref="section2">
       <div class="container">
         <h1 class="text-center">
           Connect with more patients through PolyClinic
@@ -97,10 +96,9 @@
           <div class="col-md text-right">
             <h2>Register your Clinic today</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Suscipit, eveniet quibusdam? Eligendi explicabo dolor error
-              assumenda inventore nihil ducimus, provident veniam ipsam dolore
-              maiores optio alias soluta labore officiis sit.
+              Looking to grow your healthcare practice and reach more patients?
+              Join Polyclinic to create a profile for your clinic and showcase
+              your unique offerings.
             </p>
             <a href="#" class="btn-primary" v-b-modal.register-modal
               >Find out more.</a
@@ -155,6 +153,27 @@ export default {
       ],
     };
   },
+
+  mounted() {
+    const section1 = this.$refs.section1;
+    const section2 = this.$refs.section2;
+
+    // Create a new Intersection Observer
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          section1.classList.add("animation-started");
+          section2.classList.add("animation-started");
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    // Start observing the section1 element
+    observer.observe(section1);
+    observer.observe(section2);
+  },
+
   methods: {
     customLabel(option) {
       return `${option.name} - ${option.specialization}`;
@@ -201,5 +220,40 @@ h3 {
 .btn-primary:hover {
   transform: scale(1.05);
   background-image: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+.section1 {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s, transform 2s;
+}
+.section1.animation-started {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section2 {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 1s, transform 2s;
+}
+.section2.animation-started {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes imageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-view {
+  animation: imageFadeIn 2s forwards;
 }
 </style>
